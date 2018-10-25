@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { AUTH_USER, SIGN_OUT } from './types';
+import { AUTH_USER } from './types';
 
 export const signup = (formProps, callback) => async dispatch => {
   try {
@@ -14,6 +14,6 @@ export const signup = (formProps, callback) => async dispatch => {
 };
 
 export const signout = () => {
-  localStorage.setItem('token', '');
-  return { type: SIGN_OUT, payload: '' };
+  localStorage.removeItem('token');
+  return { type: AUTH_USER, payload: '' };
 }
