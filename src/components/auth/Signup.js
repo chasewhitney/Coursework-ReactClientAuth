@@ -6,9 +6,18 @@ import { compose } from 'redux';
 import * as actions from '../../actions';
 
 class Signup extends Component {
+  state = { error : ''};
   onSubmit = (formProps) => {
     console.log('formProps:', formProps);
-    this.props.signup(formProps);
+    this.setState({error: ''})
+    this.props.signup(formProps, this.handleResponse);
+  }
+
+  handleResponse = err => {
+    if(err) {
+      return this.setState({error: err.statusText})
+    }
+    this.props.history.push("/");
   }
 
   render() {
@@ -34,6 +43,7 @@ class Signup extends Component {
               autoComplete="off"
             />
         </fieldset>
+        <div>{this.state.error}</div>
         <button>Sign up!</button>
       </form>
     );
