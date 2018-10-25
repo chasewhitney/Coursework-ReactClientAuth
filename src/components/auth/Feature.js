@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+
+import requireAuth from './requireAuth';
 
 class Feature extends Component {
-  componentDidMount(){
-    if(!this.props.auth){
-      console.log('Nope, sign in!');
-      this.props.history.push("/");
-    }
-  }
-
   render() {
     return (
       <div>
@@ -18,8 +12,4 @@ class Feature extends Component {
   }
 };
 
-function mapStateToProps(state){
-  return { auth : state.auth };
-};
-
-export default connect(mapStateToProps)(Feature);
+export default (requireAuth(Feature));
