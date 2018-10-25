@@ -17,7 +17,7 @@ class Signup extends Component {
     if(err) {
       return this.setState({error: err.statusText})
     }
-    this.props.history.push("/");
+    this.props.history.push("/feature");
   }
 
   render() {
