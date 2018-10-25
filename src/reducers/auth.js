@@ -5,7 +5,7 @@ export default function(state = '', action){
     case AUTH_USER:
       console.log();
       return action.payload;
+    default:
+      return state;
   }
-
-  return state;
 }
